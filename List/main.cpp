@@ -14,17 +14,11 @@ int main()
 	a.pushBack(2);
 	a.pushBack(34);
 
-	std::cout << a[2] << std::endl;
-	for(int i = 0; i < a.getSize(); i++) {
-		std::cout << a[i] << " ";
-	}
+	a.print();
 
-	std::cout << std::endl;
-	a.removeHead();
+	a.removeNode(2);
 
-	for (int i = 0; i < a.getSize(); i++) {
-		std::cout << a[i] << " ";
-	}
+	a.print();
 
 	system("pause");
     return 0;

@@ -1,3 +1,2 @@
 ﻿  main.cpp
-  List.vcxproj -> C:\Users\Александр\Documents\Visual Studio 2015\Projects\List\Debug\List.exe
-  List.vcxproj -> C:\Users\Александр\Documents\Visual Studio 2015\Projects\List\Debug\List.pdb (Full PDB)
+LINK : fatal error LNK1104: не удается открыть файл "C:\Users\Александр\documents\visual studio 2015\Projects\List\Debug\List.exe"

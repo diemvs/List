@@ -10,11 +10,14 @@ public:
 	~List();
 
 	void pushBack(T data);
+	void pushFront(T data);
 	void removeHead();
 	void removeNode(int idx);
 	void remove();
+	void insert(T data, int idx);
 	int getSize() { return size; }
 	void print();
+
 
 	
 
@@ -33,39 +36,35 @@ public:
 			this->next = next;
 		}
 	};
+
 	int size;
 	Node<T> *head;
 
-public:
 
 	class Iterator {
 	public:
-		Iterator(Node<T>* node) { 
-			m_node = node;
-		}
+		Node<T> *node;
+		List<T> *list;
 
-		bool operator==(const Iterator& other) const {
-			if (this == &other) {
-				return true;
-			}
-			return m_node == other.m_node;
-		}
-
-		Node<T>* operator++(int) {
-			m_node = m_node->next();
-			return m_node;
+		Iterator(Node<T> *n, List<T> *l) {
+			node = n;
+			list = l;
 		}
 		
-		T operator*() {
-			return m_node->data;
+		void forward() {
+			if (node != nullptr) {
+				node = node->next;
+			}
 		}
-
-		Node<T>* current() {
-			return m_node;
+		int& item() {
+			return node->data;
 		}
-
-	private:
-		Node<T>* m_node;
+		bool valid() {
+			return (node != NULL);
+		}
+		void start() {
+			node = list->head;
+		}
 	};
 };
 
@@ -159,3 +158,31 @@ void List<T>::print() {
 	}
 	cout << endl;
 }
+
+template<typename T>
+void List<T>::pushFront(T data) {
+	head = new Node<T>(data, head);
+	size++;
+}
+
+template<typename T>
+void List<T>::insert(T data, int idx) {
+
+	if (idx = 0) {
+		pushFront(data);
+	}
+	else {
+		Node<T> *previous = this->head;
+
+		for (int i = 0; i < idx - 1; i++) {
+			previous = previous->next;
+		}
+		Node<T> *NewNode = new Node<T>(data, previous->next);
+		previous->next = NewNode;
+
+		size++;
+	}
+
+	
+}
+
